@@ -49,7 +49,8 @@ const message = document.getElementById("message");
 
 btn.addEventListener("click", (e) => {
     e.preventDefault();
-    message.textContent = "😅 Ops! Ainda estou construindo meus projetinhos...";
+    // message.textContent = "😅 Ops! Ainda estou construindo meus projetinhos...";
+    message.textContent = "😅 Oops! Still cooking up my little projects...";
     message.style.opacity = "1";
 
     // Desaparece após 3 segundos
