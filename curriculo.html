@@ -1,173 +1,400 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Walterly | CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walterly | Curriculum</title>
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── CURRICULUM-SPECIFIC STYLES ── */
+
+    .cv-container {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: clamp(30px, 6vw, 60px) clamp(16px, 5vw, 40px);
+    }
+
+    /* PAGE HEADER */
+    .cv-header {
+      text-align: center;
+      margin-bottom: clamp(32px, 6vw, 52px);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .cv-header.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cv-header h1 {
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+      margin: 0 0 6px 0;
+      letter-spacing: 0.04em;
+    }
+
+    .cv-header .accent-line {
+      width: clamp(40px, 10vw, 60px);
+      height: 3px;
+      background: #ccff00;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+
+    /* SECTIONS */
+    .cv-section {
+      margin-bottom: clamp(28px, 5vw, 44px);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .cv-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cv-section h2 {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #ccff00;
+      margin: 0 0 14px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(204, 255, 0, 0.2);
+    }
+
+    /* ABOUT */
+    .cv-about p {
+      font-size: clamp(0.875rem, 2.5vw, 1rem);
+      line-height: 1.75;
+      color: rgba(255,255,255,0.85);
+      margin: 0 0 12px 0;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    /* ENTRIES (Education, Experience, etc.) */
+    .cv-entry {
+      margin-bottom: clamp(16px, 3vw, 24px);
+      padding-left: clamp(12px, 3vw, 20px);
+      border-left: 2px solid rgba(204, 255, 0, 0.3);
+      transition: border-color 0.3s ease;
+    }
+
+    .cv-entry:hover {
+      border-left-color: #ccff00;
+    }
+
+    .cv-entry-title {
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 2px 0;
+    }
+
+    .cv-entry-sub {
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      color: #ccff00;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+    }
+
+    .cv-entry-desc {
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin: 4px 0 0 0;
+    }
+
+    /* THESIS ENTRIES */
+    .cv-thesis-title {
+      font-size: clamp(0.875rem, 2.5vw, 0.95rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 2px 0;
+    }
+
+    .cv-thesis-original {
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
+      color: rgba(255,255,255,0.45);
+      font-style: italic;
+      margin: 4px 0 0 0;
+      line-height: 1.5;
+    }
+
+    /* SKILLS GRID */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      background: rgba(204, 255, 0, 0.08);
+      border: 1px solid rgba(204, 255, 0, 0.3);
+      color: #ccff00;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
+      font-weight: 600;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      background: rgba(204, 255, 0, 0.18);
+      border-color: #ccff00;
+    }
+
+    /* LANGUAGES */
+    .lang-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .lang-name {
+      font-size: clamp(0.875rem, 2.5vw, 0.95rem);
+      font-weight: 600;
+      min-width: 90px;
+      color: #fff;
+    }
+
+    .lang-level {
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
+      color: rgba(255,255,255,0.5);
+    }
+
+    .lang-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      max-width: 160px;
+    }
+
+    .lang-bar-fill {
+      height: 100%;
+      background: #ccff00;
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.2s ease;
+    }
+
+
+    /* LATTES LINK */
+    .lattes-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: clamp(9px, 2vw, 11px) clamp(18px, 4vw, 24px);
+      background: transparent;
+      border: 2px solid #ccff00;
+      color: #ccff00;
+      border-radius: 25px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .lattes-btn:hover {
+      background: #ccff00;
+      color: #0b0c10;
+    }
+
+    @media (hover: none) {
+      .lattes-btn:active {
+        background: #ccff00;
+        color: #0b0c10;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
   <div class="nav">
     <a href="index.html">Home</a>
     <a href="projetos.html">Projetos</a>
-    <a href="curriculo.html">Currículo</a>
   </div>
+  <div class="cv-container">
 
-  <div class="container">
+    <!-- HEADER -->
+    <header class="cv-header" id="cv-header">
+      <h1>Curriculum</h1>
+      <div class="accent-line"></div>
+    </header>
 
-    <h1>Curriculum</h1>
-
-    <div class="project-card">
+    <!-- ABOUT -->
+    <section class="cv-section" id="s-about">
       <h2>About</h2>
-      <p>
-        Master’s degree in <span class="highlight">Oceanography</span> (UFMA, 2021), with a background in satellite
-        oceanography, remote sensing, and coastal and oceanic dynamics.
-        Experience includes research on the Amazon River plume and the Brazilian Equatorial Margin, as well as work at
-        INPE with satellite-based ocean monitoring.
-      </p>
+      <div class="cv-about">
+        <p>Master's degree in Oceanography (UFMA, 2021), with a background in satellite oceanography, remote sensing, and coastal and oceanic dynamics. Experience includes research on the Amazon River plume and the Brazilian Equatorial Margin, as well as work at INPE with satellite-based ocean monitoring.</p>
+        <p>Currently pursuing a degree in Information Systems, focusing on the integration of technology, data analysis, and environmental sciences.</p>
+      </div>
+    </section>
 
-      <p>
-        Currently pursuing a degree in <span class="highlight">Information Systems</span>, focusing on the integration
-        of technology, data analysis, and environmental sciences.
-      </p>
-    </div>
-
-
-    <div class="project-card">
+    <!-- EDUCATION -->
+    <section class="cv-section" id="s-education">
       <h2>Education</h2>
 
-      <p>
-        <strong>M.Sc. in Oceanography</strong><br>
-        Universidade Federal do Maranhão — 2021
-      </p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">M.Sc. in Oceanography</p>
+        <p class="cv-entry-sub">Universidade Federal do Maranhão — 2021</p>
+      </div>
 
-      <p>
-        <strong>B.Sc. in Oceanography</strong><br>
-        Universidade Federal do Maranhão — 2016<br>
-        <span style="color:#aaa;">Exchange program in Marine Sciences — Universidad de Alicante (Spain)</span>
-      </p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">B.Sc. in Oceanography</p>
+        <p class="cv-entry-sub">Universidade Federal do Maranhão — 2016</p>
+        <p class="cv-entry-desc">Exchange program in Marine Sciences — Universidad de Alicante, Spain</p>
+      </div>
 
-      <p>
-        <strong>B.Sc. in Information Systems</strong><br>
-        Instituto Federal do Maranhão — <span style="color:#aaa;">in progress</span>
-      </p>
-    </div>
+      <div class="cv-entry">
+        <p class="cv-entry-title">B.Sc. in Information Systems</p>
+        <p class="cv-entry-sub">Instituto Federal do Maranhão — in progress</p>
+      </div>
+    </section>
 
-
-    <div class="project-card">
+    <!-- RESEARCH EXPERIENCE -->
+    <section class="cv-section" id="s-research">
       <h2>Research Experience</h2>
 
-      <p>
-        <strong>INPE — National Institute for Space Research</strong><br>
-        Visiting researcher working with <span class="highlight">satellite ocean monitoring</span>, remote sensing, and
-        environmental data analysis.
-      </p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">INPE — National Institute for Space Research</p>
+        <p class="cv-entry-desc">Visiting researcher working with satellite ocean monitoring, remote sensing, and environmental data analysis. Experience in coastal dynamics, ocean-atmosphere interaction, and climate-related studies.</p>
+      </div>
+    </section>
 
-      <p>
-        Experience in coastal dynamics, ocean-atmosphere interaction, and climate-related studies.
-      </p>
-    </div>
+    <!-- THESIS & ACADEMIC WORK -->
+    <section class="cv-section" id="s-thesis">
+      <h2>Thesis &amp; Academic Work</h2>
 
+      <div class="cv-entry">
+        <p class="cv-entry-sub">Master's Dissertation</p>
+        <p class="cv-thesis-title">Variability of the Amazon River plume along the coast of Maranhão, Brazilian Equatorial Margin</p>
+        <p class="cv-thesis-original">Variabilidade da pluma do Rio Amazonas na Costa do Maranhão, Margem Equatorial Brasileira</p>
+      </div>
 
-    <div class="project-card">
-      <h2>Thesis & Academic Work</h2>
+      <div class="cv-entry">
+        <p class="cv-entry-sub">Undergraduate Thesis</p>
+        <p class="cv-thesis-title">Mapping mangroves in Cumã Bay (Maranhão, Brazil) using Landsat 8 OLI/TIRS remote sensing</p>
+        <p class="cv-thesis-original">Mapeamento de manguezais da Baía de Cumã, Reentrâncias Maranhenses MA, por sensoriamento remoto utilizando Landsat 8 OLI/TIRS</p>
+      </div>
+    </section>
 
-      <p>
-        <strong>Master’s Dissertation</strong><br>
-        <em>
-          Variability of the Amazon River plume along the coast of Maranhão, Brazilian Equatorial Margin
-        </em><br>
-        <span style="color:#aaa;">
-          Original: Variabilidade da pluma do Rio Amazonas na Costa do Maranhão, Margem Equatorial Brasileira
-        </span>
-      </p>
-
-      <br>
-
-      <p>
-        <strong>Undergraduate Thesis</strong><br>
-        <em>
-          Mapping mangroves in Cumã Bay (Maranhão, Brazil) using Landsat 8 OLI/TIRS remote sensing
-        </em><br>
-        <span style="color:#aaa;">
-          Original: Mapeamento de manguezais da Baía de Cumã, Reentrâncias Maranhenses MA, por sensoriamento remoto
-          utilizando Landsat 8 OLI/TIRS
-        </span>
-      </p>
-    </div>
-
-
-    <div class="project-card">
+    <!-- RESEARCH PROJECTS -->
+    <section class="cv-section" id="s-projects">
       <h2>Research Projects</h2>
 
-      <p>
-        <strong>Brazilian Equatorial Margin & Climate Change</strong><br>
-        Oceanographic characterization of continental shelf and estuarine systems under climate and port expansion
-        scenarios.
-      </p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">Brazilian Equatorial Margin &amp; Climate Change</p>
+        <p class="cv-entry-desc">Oceanographic characterization of continental shelf and estuarine systems under climate and port expansion scenarios.</p>
+      </div>
 
-      <p>
-        <strong>Mangrove Restoration in Coastal Maranhão</strong><br>
-        Environmental recovery of degraded coastal ecosystems under global change conditions.
-      </p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">Mangrove Restoration in Coastal Maranhão</p>
+        <p class="cv-entry-desc">Environmental recovery of degraded coastal ecosystems under global change conditions.</p>
+      </div>
 
-      <p>
-        <strong>Estrogenic Compounds in Bacanga Estuary</strong><br>
-        Assessment of environmental contamination using biomarker analysis in aquatic systems.
-      </p>
-    </div>
+      <div class="cv-entry">
+        <p class="cv-entry-title">Estrogenic Compounds in Bacanga Estuary</p>
+        <p class="cv-entry-desc">Assessment of environmental contamination using biomarker analysis in aquatic systems.</p>
+      </div>
+    </section>
 
-
-    <div class="project-card">
+    <!-- TECHNICAL SKILLS -->
+    <section class="cv-section" id="s-skills">
       <h2>Technical Skills</h2>
-      <p>
-        JavaScript • Python • Java • C<br><br>
-        Remote Sensing • Data Analysis • Satellite Oceanography
-      </p>
-    </div>
+      <div class="skills-grid">
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C</span>
+        <span class="skill-tag">Remote Sensing</span>
+        <span class="skill-tag">Data Analysis</span>
+        <span class="skill-tag">Satellite Oceanography</span>
+      </div>
+    </section>
 
-
-    <div class="project-card">
+    <!-- LANGUAGES -->
+    <section class="cv-section" id="s-languages">
       <h2>Languages</h2>
-      <p>
-        Portuguese — Native<br>
-        Spanish — Intermediate<br>
-        English — Basic
-      </p>
-    </div>
 
+      <div class="lang-row">
+        <span class="lang-name">Portuguese</span>
+        <div class="lang-bar"><div class="lang-bar-fill" data-width="100%"></div></div>
+        <span class="lang-level">Native</span>
+      </div>
 
-    <div class="project-card">
+      <div class="lang-row">
+        <span class="lang-name">Spanish</span>
+        <div class="lang-bar"><div class="lang-bar-fill" data-width="60%"></div></div>
+        <span class="lang-level">Intermediate</span>
+      </div>
+
+      <div class="lang-row">
+        <span class="lang-name">English</span>
+        <div class="lang-bar"><div class="lang-bar-fill" data-width="35%"></div></div>
+        <span class="lang-level">Basic</span>
+      </div>
+    </section>
+
+    <!-- ACADEMIC ACTIVITIES -->
+    <section class="cv-section" id="s-activities">
       <h2>Selected Academic Activities</h2>
-      <p>
-        Participation in scientific events including Oceanography Congresses, Environmental Education Congress, and
-        SBPC.<br><br>
-        Experience in academic monitoring, laboratory research, and scientific presentations.
-      </p>
-    </div>
+      <div class="cv-about">
+        <p>Participation in scientific events including Oceanography Congresses, Environmental Education Congress, and SBPC. Experience in academic monitoring, laboratory research, and scientific presentations.</p>
+      </div>
+    </section>
 
-
-    <div class="project-card">
+    <!-- LATTES -->
+    <section class="cv-section" id="s-lattes">
       <h2>Full Academic CV</h2>
-      <p>
-        For a complete and detailed academic record, access my profile on the
-        <a href="http://lattes.cnpq.br/1555539053765717" target="_blank" style="color:#ccff00;">
-          Lattes Platform
-        </a>.
-      </p>
-    </div>
+      <div class="cv-about">
+        <p>For a complete and detailed academic record, access my profile on the Lattes Platform.</p>
+      </div>
+      <a class="lattes-btn" href="http://lattes.cnpq.br/" target="_blank" rel="noopener">
+        Access Lattes Profile →
+      </a>
+    </section>
 
-  </div>
+  </div><!-- /.cv-container -->
 
-  <script src="script.js"></script>
+  <script>
+    // ── FADE-IN DAS SEÇÕES AO CARREGAR ──
+    const sections = document.querySelectorAll('.cv-section, .cv-header');
 
+    function revealSections() {
+      sections.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, index * 150);
+      });
+    }
+
+    // ── BARRAS DE IDIOMA ──
+    function animateBars() {
+      document.querySelectorAll('.lang-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width;
+      });
+    }
+
+    // Inicia tudo após o carregamento
+    window.addEventListener('load', () => {
+      revealSections();
+      setTimeout(animateBars, sections.length * 150 + 300);
+    });
+  </script>
 </body>
-
 </html>
