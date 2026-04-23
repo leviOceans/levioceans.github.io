@@ -18,6 +18,25 @@ body {
     align-items: center;
 }
 
+/* NAV */
+.nav {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.nav a {
+  color: #888;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #ccff00;
+}
+
 /* FOTO FLUIDA */
 .foto {
     width: clamp(120px, 35vw, 180px);
