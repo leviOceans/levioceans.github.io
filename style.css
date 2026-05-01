@@ -374,3 +374,23 @@ body.projects-page .projects-nav .skill-tag {
     cursor: pointer;
     font: inherit;
 }
+
+.nav button.skill-tag[data-theme-toggle] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.theme-icon {
+    width: 1em;
+    height: 1em;
+    display: block;
+    flex: 0 0 auto;
+    color: var(--cor-destaque);
+}
+
+.theme-icon[hidden] {
+    display: none;
+}
+

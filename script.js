@@ -59,14 +59,33 @@ const curriculoBtn = document.getElementById("curriculo-btn");
 const message = document.getElementById("message");
 const themeButtons = document.querySelectorAll("[data-theme-toggle]");
 
+const sunIconMarkup = `
+    <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="4" fill="currentColor"/>
+        <path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4l1.4-1.4M18 6l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+`;
+
+const moonIconMarkup = `
+    <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 13.2A8.5 8.5 0 1 1 10.8 3a7 7 0 0 0 10.2 10.2Z" fill="currentColor"/>
+    </svg>
+`;
+
+function updateThemeButton(button, theme) {
+    const isDark = theme === "dark";
+
+    button.innerHTML = isDark ? sunIconMarkup : moonIconMarkup;
+
+    button.setAttribute("aria-label", isDark ? "Mudar para tema claro" : "Mudar para tema escuro");
+    button.setAttribute("aria-pressed", String(!isDark));
+}
+
 function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
 
     themeButtons.forEach((button) => {
-        const isDark = theme === "dark";
-        button.textContent = isDark ? "☀" : "☾";
-        button.setAttribute("aria-label", isDark ? "Mudar para tema claro" : "Mudar para tema escuro");
-        button.setAttribute("aria-pressed", String(!isDark));
+        updateThemeButton(button, theme);
     });
 }
 
