@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,12 +43,13 @@
       font-size: clamp(1.8rem, 6vw, 2.6rem);
       margin: 0 0 6px 0;
       letter-spacing: 0.04em;
+      color: var(--cor-destaque)
     }
 
     .cv-header .accent-line {
       width: clamp(40px, 10vw, 60px);
       height: 3px;
-      background: #ccff00;
+      background: var(--cor-destaque);
       margin: 0 auto;
       border-radius: 2px;
     }
@@ -71,17 +72,17 @@
       font-size: clamp(0.75rem, 2.5vw, 0.85rem);
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #ccff00;
+      color: var(--cor-destaque);
       margin: 0 0 14px 0;
       padding-bottom: 8px;
-      border-bottom: 1px solid rgba(204, 255, 0, 0.2);
+      border-bottom: 1px solid rgba(var(--cor-destaque-rgb), 0.2);
     }
 
     /* ABOUT */
     .cv-about p {
       font-size: clamp(0.875rem, 2.5vw, 1rem);
       line-height: 1.75;
-      color: rgba(255,255,255,0.85);
+      color: var(--texto-secundario);
       margin: 0 0 12px 0;
       text-align: justify;
       hyphens: auto;
@@ -91,31 +92,31 @@
     .cv-entry {
       margin-bottom: clamp(16px, 3vw, 24px);
       padding-left: clamp(12px, 3vw, 20px);
-      border-left: 2px solid rgba(204, 255, 0, 0.3);
+      border-left: 2px solid rgba(var(--cor-destaque-rgb), 0.3);
       transition: border-color 0.3s ease;
     }
 
     .cv-entry:hover {
-      border-left-color: #ccff00;
+      border-left-color: var(--cor-destaque);
     }
 
     .cv-entry-title {
       font-size: clamp(0.9rem, 2.5vw, 1rem);
       font-weight: 700;
-      color: #ffffff;
+      color: var(--texto-principal);
       margin: 0 0 2px 0;
     }
 
     .cv-entry-sub {
       font-size: clamp(0.8rem, 2vw, 0.9rem);
-      color: #ccff00;
+      color: var(--cor-destaque);
       font-weight: 600;
       margin: 0 0 4px 0;
     }
 
     .cv-entry-desc {
       font-size: clamp(0.8rem, 2vw, 0.9rem);
-      color: rgba(255,255,255,0.65);
+      color: var(--texto-secundario);
       line-height: 1.6;
       margin: 4px 0 0 0;
     }
@@ -124,13 +125,13 @@
     .cv-thesis-title {
       font-size: clamp(0.875rem, 2.5vw, 0.95rem);
       font-weight: 700;
-      color: #ffffff;
+      color: var(--texto-principal);
       margin: 0 0 2px 0;
     }
 
     .cv-thesis-original {
       font-size: clamp(0.75rem, 2vw, 0.85rem);
-      color: rgba(255,255,255,0.45);
+      color: var(--texto-suave);
       font-style: italic;
       margin: 4px 0 0 0;
       line-height: 1.5;
@@ -145,9 +146,9 @@
     }
 
     .skill-tag {
-      background: rgba(204, 255, 0, 0.08);
-      border: 1px solid rgba(204, 255, 0, 0.3);
-      color: #ccff00;
+      background: var(--cor-destaque-suave);
+      border: 1px solid var(--cor-destaque-borda);
+      color: var(--cor-destaque);
       border-radius: 20px;
       padding: 5px 14px;
       font-size: clamp(0.75rem, 2vw, 0.85rem);
@@ -156,8 +157,8 @@
     }
 
     .skill-tag:hover {
-      background: rgba(204, 255, 0, 0.18);
-      border-color: #ccff00;
+      background: rgba(var(--cor-destaque-rgb), 0.18);
+      border-color: var(--cor-destaque);
     }
 
     /* LANGUAGES */
@@ -172,18 +173,18 @@
       font-size: clamp(0.875rem, 2.5vw, 0.95rem);
       font-weight: 600;
       min-width: 90px;
-      color: #fff;
+      color: var(--texto-principal);
     }
 
     .lang-level {
       font-size: clamp(0.75rem, 2vw, 0.85rem);
-      color: rgba(255,255,255,0.5);
+      color: var(--texto-suave);
     }
 
     .lang-bar {
       flex: 1;
       height: 4px;
-      background: rgba(255,255,255,0.1);
+      background: var(--linha-suave);
       border-radius: 2px;
       overflow: hidden;
       max-width: 160px;
@@ -191,7 +192,7 @@
 
     .lang-bar-fill {
       height: 100%;
-      background: #ccff00;
+      background: var(--cor-destaque);
       border-radius: 2px;
       width: 0;
       transition: width 1.2s ease;
@@ -204,8 +205,8 @@
       margin-top: 10px;
       padding: clamp(9px, 2vw, 11px) clamp(18px, 4vw, 24px);
       background: transparent;
-      border: 2px solid #ccff00;
-      color: #ccff00;
+      border: 2px solid var(--cor-destaque);
+      color: var(--cor-destaque);
       border-radius: 25px;
       font-family: 'Quicksand', sans-serif;
       font-weight: 700;
@@ -215,13 +216,13 @@
     }
 
     .lattes-btn:hover {
-      background: #ccff00;
+      background: var(--cor-destaque);
       color: #0b0c10;
     }
 
     @media (hover: none) {
       .lattes-btn:active {
-        background: #ccff00;
+        background: var(--cor-destaque);
         color: #0b0c10;
       }
     }
@@ -229,9 +230,10 @@
 </head>
 
 <body>
-  <div class="nav">
-    <a href="index.html">Home</a>
-    <a href="projetos.html">Projetos</a>
+  <div class="nav projects-nav">
+    <a class="skill-tag" href="index.html">Home</a>
+    <a class="skill-tag" href="projetos.html">Projetos</a>
+    <button class="skill-tag" type="button" data-theme-toggle aria-label="Mudar para tema claro">☾</button>
   </div>
   <div class="cv-container">
 
@@ -376,6 +378,7 @@
 
   </div><!-- /.cv-container -->
 
+    <script src="script.js"></script>
   <script>
     // ── FADE-IN DAS SEÇÕES AO CARREGAR ──
     const sections = document.querySelectorAll('.cv-section, .cv-header');

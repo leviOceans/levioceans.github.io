@@ -1,42 +1,69 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
-  <title>Walterly | Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Seleção de projetos desenvolvidos por Walterly Sullivan.">
+  <title>Walterly | Projetos</title>
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon.png" type="image/png">
 
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="projects-page">
 
-  <div class="nav">
-    <a href="index.html">Home</a>
-    <a href="projetos.html">Projetos</a>
-    <a href="curriculo.html">Currículo</a>
+  <div class="nav projects-nav">
+    <a class="skill-tag" href="index.html">Home</a>
+    <!-- <a class="skill-tag" href="projetos.html">Projetos</a> -->
+    <a class="skill-tag" href="curriculo.html">Currículo</a>
+    <button class="skill-tag" type="button" data-theme-toggle aria-label="Mudar para tema claro">☾</button>
   </div>
 
-  <div class="container">
+  <div class="container projects-container">
+    <div class="projects-reveal">
+      <h1>Projetos</h1>
 
-    <h1>Projetos</h1>
-
-    <div class="project-card">
-      <h2>🌊 Ocean Data</h2>
-      <p>Análise com Python</p>
+      <p class="projects-description">
+        Uma seleção simples dos projetos que quero destacar aqui.
+      </p>
     </div>
 
-    <div class="project-card">
-      <h2>💻 Portfólio</h2>
-      <p>Site pessoal animado</p>
+    <div class="project-card projects-reveal">
+      <h2>Galerij der Herinneringen</h2>
+      <p>Galeria das Memórias - Uma página especial construída para celebrar uma história afetiva.</p>
+      <a href="projects/my-love/">Abrir projeto</a>
     </div>
 
+    <div class="project-card projects-reveal">
+      <h2>Ocean Data</h2>
+      <p>Projeto de estudo com Python e análise de dados ligados ao mar.</p>
+      <a href="curriculo.html#s-projects">Ver no currículo</a>
+    </div>
+
+    <div class="project-card project-card--subtle projects-reveal">
+      <h2>Novo projeto</h2>
+      <p>Espaço reservado para o próximo trabalho que entrar no portfólio.</p>
+    </div>
   </div>
 
-  <script src="js/script.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const sections = document.querySelectorAll('.projects-reveal');
+
+    function revealSections() {
+      sections.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, index * 150);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', revealSections);
+  </script>
 
 </body>
 
