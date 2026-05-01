@@ -21,7 +21,7 @@
     --texto-secundario: #4b4f58;
     --texto-suave: rgba(11, 12, 16, 0.45);
     --linha-suave: rgba(11, 12, 16, 0.1);
-    --cor-destaque: #6B8E23;
+    --cor-destaque: #E65C00; /*#6B8E23;*/
     --cor-destaque-rgb: 132, 179, 0;
     --cor-destaque-suave: rgba(var(--cor-destaque-rgb), 0.08);
     --cor-destaque-borda: rgba(var(--cor-destaque-rgb), 0.28);
