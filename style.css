@@ -15,7 +15,7 @@
 }
 
 [data-theme="light"] {
-    --bg-principal: #ffffff;
+    --bg-principal: #FFFBF7;
     --bg-secundario: rgba(0, 0, 0, 0.03);
     --texto-principal: #0b0c10;
     --texto-secundario: #4b4f58;
