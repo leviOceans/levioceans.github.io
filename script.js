@@ -63,7 +63,7 @@ const i18n = {
         "cv.skills.tag5": "Data Analysis",
         "cv.skills.tag6": "Python",
         "cv.skills.tag7": "NetCDF",
-        "cv.skills.tag8": "QGis e",
+        "cv.skills.tag8": "QGis",
         "cv.languages.portuguese": "Portuguese",
         "cv.languages.spanish": "Spanish",
         "cv.languages.english": "English",
